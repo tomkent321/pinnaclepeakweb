@@ -2,7 +2,7 @@
 // import mongoose from 'mongoose'
 const mongoose = require('mongoose')
 
-const MONGO_URI = "mongodb+srv://tomkent321:tomkentABC@cluster0.gcmm6.mongodb.net/custom-blog?retryWrites=true&w=majority"
+const MONGO_URI = 
 const connectDB = async () => {
   try {
     // const conn = await mongoose.connect(process.env.MONGO_URI, {

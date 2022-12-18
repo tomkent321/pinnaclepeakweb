@@ -4,8 +4,8 @@ const ejs = require('ejs')
 const _ = require('lodash')
 
 const { MongoClient } = require('mongodb')
-const uri =
-  'mongodb+srv://tomkent321:tomkentABC@cluster0.gcmm6.mongodb.net/custom-blog?retryWrites=true&w=majority'
+const uri = //uri goes here
+ 
 const client = new MongoClient(uri)
 const mongoose = require('mongoose')
 
