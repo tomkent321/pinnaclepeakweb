@@ -1,0 +1,39 @@
+<%- include('partials/header'); -%>
+<h1>Update Post</h1>
+<div class="container">
+  <form action="/update" method="POST">
+    <div class="row g-3">
+      <div class="col-10">
+        <div class="mb-3">
+          <label for="postTitle" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            required=""
+            name="postTitle"
+            value="Blog Title"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="postContent" class="form-label"
+            >Post</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            name="postContent"
+          >This is the actual blog area.</textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit" name="button">
+          Update Changes
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<%- include('partials/footer'); -%>

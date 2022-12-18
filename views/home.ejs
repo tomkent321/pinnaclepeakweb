@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+<h1>Home</h1>
+<p><%= homeStartingContent %></p>
+
+<h3 class="js-noMenu" onmousedown="rightCheck(event)">Journal</h3>
+
+<% posts.forEach((p,i) => { %>
+<div>
+  <h5><%= p.title %> <span class="timeStamp"> <%= p.time %></span></h5>
+  <p><%= p.trunc %><a href="/posts/<%= p.title %>">read more</a></p>
+</div>
+
+<% }) %> 
+
+
+<%- include('partials/footer'); -%>

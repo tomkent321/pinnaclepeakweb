@@ -1,0 +1,7 @@
+To keep vscode from auto inserting ending tags on ejs files, I set the "format on save" in vscode settings to false. 
+
+When not useing ejs better to turn this back on.
+
+
+
+<!-- <script type="application/javascript" src="/index.js"></script> -->

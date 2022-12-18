@@ -1,0 +1,6 @@
+<%- include('partials/header'); -%>
+<div>
+  <h5><%= post.title %> <span class="timeStamp"> <%= post.time %></span><span id="editPost">edit</span><span class="deletePost">x</span><button id="1" onClick="reply_click(this.id)">B1</button></h5>
+  <p><%= post.post %></p>   <a href="/compose">goto compose</a>
+</div>
+<%- include('partials/footer'); -%>
