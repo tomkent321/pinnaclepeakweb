@@ -2,10 +2,12 @@ const express = require('express')
 const app = express()
 const ejs = require('ejs')
 const _ = require('lodash')
+require('dotenv').config()
+// console.log(process.env) // remove this after you've confirmed it is working
 
 const { MongoClient } = require('mongodb')
-const uri = //uri goes here
- 
+
+const uri =   process.env.MONGO_URI
 const client = new MongoClient(uri)
 const mongoose = require('mongoose')
 
@@ -60,9 +62,10 @@ app.post('/useradd', (req, res) => {
     access: req.body.access,
   }
   
-  
+  addUser(user).catch(console.dir)
+  res.redirect('/')
 
-  console.log(user)
+  // console.log(user)
 })
 
 
@@ -152,6 +155,41 @@ app.get('/posts/:postName', (req, res) => {
 })
 
 // DB interface functions
+
+
+async function addUser(user) {
+  try {
+    const database = client.db('pinnaclecreek')
+    const users = database.collection('users')
+    // create a document to insert
+    const thisUser = {
+      unitNumber: user.unitNumber,
+      buildingNumber: user.buildingNumber,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      spouseName: user.spouseName,
+      userName: user.userName,
+      password: user.password,
+      phone: user.phone,
+      email: user.email,
+      address: user.address,
+      address2: user.address2,
+      city: user.city,
+      state: user.state,
+      zip: user.zip,
+      remoteOwner: user.remoteOwner,
+      access: user.access,
+    }
+    const result = await users.insertOne(thisUser)
+    console.log(`A user was added with the _id: ${result.insertedId}`)
+  } finally {
+    // await client.close()
+  }
+}
+
+
+
+
 
 async function insertPost(post) {
   try {
