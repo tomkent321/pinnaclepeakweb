@@ -12,6 +12,7 @@ const mongoose = require('mongoose')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json({extended: false}))
 app.set('view engine', 'ejs')
+
 app.use(express.static('public'))
 
 
@@ -56,37 +57,37 @@ app.get('/', (req, res) => {
   res.render('cover')
 })
 
-app.get('/users', (req, res) => {
-  res.render('userAdd')
-})
+// router.get('/users', (req, res) => {
+//   res.render('userAdd')
+// })
 
-app.post('/useradd', (req, res) => {
+// app.post('/useradd', (req, res) => {
   
-  const user = {
+//   const user = {
 
-    unitNumber: req.body.unitNumber,
-    buildingNumber: req.body.buildingNumber,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    spouseName: req.body.spouseName,
-    userName: req.body.userName,
-    password: req.body.password,
-    phone: req.body.phone,
-    email: req.body.email,
-    address: req.body.address,
-    address2: req.body.address2,
-    city: req.body.city,
-    state: req.body.state,
-    zip: req.body.zip,
-    remoteOwner: !req.body.remoteOwner ? false : true,
-    access: req.body.access,
-  }
+//     unitNumber: req.body.unitNumber,
+//     buildingNumber: req.body.buildingNumber,
+//     firstName: req.body.firstName,
+//     lastName: req.body.lastName,
+//     spouseName: req.body.spouseName,
+//     userName: req.body.userName,
+//     password: req.body.password,
+//     phone: req.body.phone,
+//     email: req.body.email,
+//     address: req.body.address,
+//     address2: req.body.address2,
+//     city: req.body.city,
+//     state: req.body.state,
+//     zip: req.body.zip,
+//     remoteOwner: !req.body.remoteOwner ? false : true,
+//     access: req.body.access,
+//   }
   
-  addUser(user).catch(console.dir)
-  res.redirect('/')
+//   addUser(user).catch(console.dir)
+//   res.redirect('/')
 
-  // console.log(user)
-})
+//   // console.log(user)
+// })
 
 
 
@@ -177,35 +178,7 @@ app.get('/posts/:postName', (req, res) => {
 // DB interface functions
 
 
-async function addUser(user) {
-  try {
-    const database = client.db('pinnaclecreek')
-    const users = database.collection('users')
-    // create a document to insert
-    const thisUser = {
-      unitNumber: user.unitNumber,
-      buildingNumber: user.buildingNumber,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      spouseName: user.spouseName,
-      userName: user.userName,
-      password: user.password,
-      phone: user.phone,
-      email: user.email,
-      address: user.address,
-      address2: user.address2,
-      city: user.city,
-      state: user.state,
-      zip: user.zip,
-      remoteOwner: user.remoteOwner,
-      access: user.access,
-    }
-    const result = await users.insertOne(thisUser)
-    console.log(`A user was added with the _id: ${result.insertedId}`)
-  } finally {
-    // await client.close()
-  }
-}
+
 
 
 
