@@ -2,25 +2,45 @@ const express = require('express')
 const app = express()
 const ejs = require('ejs')
 const _ = require('lodash')
+const router = express.Router()
 require('dotenv').config()
-// console.log(process.env) // remove this after you've confirmed it is working
-
 const { MongoClient } = require('mongodb')
-
 const uri =   process.env.MONGO_URI
 const client = new MongoClient(uri)
 const mongoose = require('mongoose')
 
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json({extended: false}))
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-const homeStartingContent =
-  "You would think that by now I would have learned "
-const aboutContent =
-  'Hac  dui.'
-const contactContent =
-  'Scelerisque  libero.'
+
+
+
+// Define routes
+
+app.use('/api/users', require('./routes/api/users') )
+app.use('/api/auth', require('./routes/api/auth') )
+app.use('/api/timeLog', require('./routes/api/timeLog') )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var posts = []
 getAllPosts(posts)
@@ -36,7 +56,7 @@ app.get('/', (req, res) => {
   res.render('cover')
 })
 
-app.get('/useradd', (req, res) => {
+app.get('/users', (req, res) => {
   res.render('userAdd')
 })
 
@@ -281,7 +301,10 @@ async function updatePost(post) {
 // run().catch(console.dir);
 
 // run().catch(console.dir);
+const PORT = process.env.PORT || 3000
 
-app.listen(3000, function () {
-  console.log('Server started on port 3000')
-})
+// app.listen(3000, function () {
+//   console.log('Server started on port 3000')
+// })
+
+app.listen(PORT, () => console.log(`Server started on Port ${PORT}`))
