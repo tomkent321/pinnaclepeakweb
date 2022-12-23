@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 
 const connectDB = async () => {
   try {
-    // const conn = await mongoose.connect(process.env.MONGO_URI, {
+   
     const conn = await mongoose.connect(MONGO_URI, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
@@ -17,6 +17,7 @@ const connectDB = async () => {
   } catch (error) {
     // console.error(`Error: ${error.message}`.red.underline.bold)
     console.error(`Error: ${error.message}`)
+    // exit process with failture
     process.exit(1)
   }
 }

@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
   buildingNumber: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  spouseName: { type: String, required: true },
+  spouseName: { type: String, required: false },
   userName: { type: String, required: true },
   password: { type: String, required: true },
   phone: { type: String, required: true },
@@ -17,7 +17,8 @@ const UserSchema = new mongoose.Schema({
   zip: { type: String, required: true },
   remoteOwner: { type: Boolean, required: true },
   access: { type: String, required: true },
-  date: { type: Date, required: Date.now},
+  avatar: {type: String, required: false},
+  date: { type: Date, defaul: Date.now},
 })
 
 module.exports = User = mongoose.model('user', UserSchema)

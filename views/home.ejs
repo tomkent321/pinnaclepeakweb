@@ -1,16 +1,12 @@
-<%- include('partials/header'); -%>
-<h1>Home</h1>
-<p><%= homeStartingContent %></p>
-
-<h3 class="js-noMenu" onmousedown="rightCheck(event)">Journal</h3>
-
-<% posts.forEach((p,i) => { %>
-<div>
-  <h5><%= p.title %> <span class="timeStamp"> <%= p.time %></span></h5>
-  <p><%= p.trunc %><a href="/posts/<%= p.title %>">read more</a></p>
-</div>
-
-<% }) %> 
-
-
-<%- include('partials/footer'); -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>This is the Home Dashboard</h1>
+  <h2>Welcome: <%= firstName %> <%= lastName %> from Unit: <%= unit %>   </h2>
+</body>
+</html>
